@@ -33,6 +33,7 @@ app.post('/send-email', (req, res) => {
     const mailOptions = {
         from: process.env.EMAIL,
         to: 'jasonerniody36@gmail.com', // Replace with the recipient's email
+        cc: '' || '', // Add CC here as a string or array of email addresses
         subject: 'Ambulance Booking Request',
         text:` 
             Name: ${name}
