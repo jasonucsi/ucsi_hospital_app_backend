@@ -5,8 +5,13 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 
 const app = express();
-
-app.use(cors());
+const corsOptions = {
+    origin: '*',  // Allow all origins (for testing) or specify allowed origins like 'http://localhost:3000'
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type,Authorization',
+  };
+  
+app.use(cors(corsOptions)); // Add this line for CORS
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));  // Handle URL-encoded bodies (if you're sending x-www-form-urlencoded)
@@ -62,6 +67,8 @@ app.listen(process.env.PORT || 3000, () => {
 });
 
 module.exports = app;
+
+
 // ===== for postman =====
 // require('dotenv').config();
 // const express = require('express');
